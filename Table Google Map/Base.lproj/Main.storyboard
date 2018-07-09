@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0vQ-OR-vWf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Location List View Controller-->
+        <scene sceneID="lsj-8n-rfU">
+            <objects>
+                <tableViewController id="0vQ-OR-vWf" customClass="LocationListViewController" customModule="Table_Google_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wvl-tV-FjS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" textLabel="7Cj-eX-qBE" style="IBUITableViewCellStyleDefault" id="zj6-W2-ftZ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zj6-W2-ftZ" id="7gc-Rp-EwD">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Cj-eX-qBE">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vQx-Pj-gn2" kind="presentation" identifier="MapSegue" trigger="accessoryAction" id="4bT-Ms-Aea"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0vQ-OR-vWf" id="anF-A6-XKI"/>
+                            <outlet property="delegate" destination="0vQ-OR-vWf" id="sRd-6x-FL9"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nuj-qB-iGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="-66"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="xEb-bP-ygV">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="vQx-Pj-gn2" customClass="MapViewController" customModule="Table_Google_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kpz-HG-jIz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0iJ-ZC-9uu" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="553"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXt-GI-Xbb">
+                                <rect key="frame" x="16" y="603" width="65" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="clickBackButton:" destination="vQx-Pj-gn2" eventType="touchUpInside" id="lKW-Lj-CRP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Zd-tx-GjT" firstAttribute="bottom" secondItem="CXt-GI-Xbb" secondAttribute="bottom" constant="16" id="1AL-mj-YT1"/>
+                            <constraint firstItem="0iJ-ZC-9uu" firstAttribute="top" secondItem="6Zd-tx-GjT" secondAttribute="top" id="7Lg-fI-2ay"/>
+                            <constraint firstItem="0iJ-ZC-9uu" firstAttribute="leading" secondItem="6Zd-tx-GjT" secondAttribute="leading" id="Cri-BL-aw8"/>
+                            <constraint firstItem="CXt-GI-Xbb" firstAttribute="top" secondItem="0iJ-ZC-9uu" secondAttribute="bottom" constant="30" id="Jd6-pH-9HQ"/>
+                            <constraint firstItem="CXt-GI-Xbb" firstAttribute="leading" secondItem="6Zd-tx-GjT" secondAttribute="leading" constant="16" id="Yrx-mL-Nuq"/>
+                            <constraint firstItem="6Zd-tx-GjT" firstAttribute="trailing" secondItem="0iJ-ZC-9uu" secondAttribute="trailing" id="bLr-DW-qsk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Zd-tx-GjT"/>
+                    </view>
+                    <connections>
+                        <outlet property="myMapView" destination="0iJ-ZC-9uu" id="ShQ-zY-2tf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHk-DG-kfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001.5" y="-66.5"/>
+        </scene>
+    </scenes>
+</document>
